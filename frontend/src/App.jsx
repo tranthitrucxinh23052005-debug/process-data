@@ -96,7 +96,7 @@ const [kmeansCols, setKmeansCols] = useState([]);   // CÁI MỚI DÀNH RIÊNG C
     setLoadingStatus('⌛ ĐANG QUÉT...');
     const formData = new FormData(); formData.append('file', selectedFile);
     try {
-      const res = await fetch('http://localhost:8000/api/upload', { method: 'POST', body: formData });
+      const res = await fetch('https://tieuthetunhacongdang-tx-data-analytics-api.hf.space/api/upload', { method: 'POST', body: formData });
       const result = await res.json();
       if(result.status === 'success') {
         setColumnsInfo(result.columns_info);
@@ -122,7 +122,7 @@ const [kmeansCols, setKmeansCols] = useState([]);   // CÁI MỚI DÀNH RIÊNG C
     formData.append('agg_func', aggFunc); // State aggFunc (sum/mean/count)
 
     try {
-      const res = await fetch('http://localhost:8000/api/process-data', { method: 'POST', body: formData });
+      const res = await fetch('https://tieuthetunhacongdang-tx-data-analytics-api.hf.space/api/process-data', { method: 'POST', body: formData });
       const result = await res.json();
       if (result.status === 'success') {
         setBiData(result.data);
@@ -143,7 +143,7 @@ const [kmeansCols, setKmeansCols] = useState([]);   // CÁI MỚI DÀNH RIÊNG C
   formData.append('kmeans_cols', kmeansCols.join(','));
 
   try {
-    const res = await fetch(`http://localhost:8000/api/kmeans-pipeline?k=${kClusters}`, { 
+    const res = await fetch(`https://tieuthetunhacongdang-tx-data-analytics-api.hf.space/api/kmeans-pipeline?k=${kClusters}`, { 
       method: 'POST', 
       body: formData 
     });
@@ -181,7 +181,7 @@ const [kmeansCols, setKmeansCols] = useState([]);   // CÁI MỚI DÀNH RIÊNG C
   formData.append('model_type', modelType);
   
   try {
-    const res = await fetch('http://localhost:8000/api/predict', { method: 'POST', body: formData });
+    const res = await fetch('https://tieuthetunhacongdang-tx-data-analytics-api.hf.space/api/predict', { method: 'POST', body: formData });
     const result = await res.json();
     if (result.status === 'success') {
       setModelMetrics(result.metrics);
@@ -202,7 +202,7 @@ const [kmeansCols, setKmeansCols] = useState([]);   // CÁI MỚI DÀNH RIÊNG C
     formData.append('target_col', arimaTargetCol);
     formData.append('steps', arimaSteps);
     try {
-      const res = await fetch('http://localhost:8000/api/forecast-arima', { method: 'POST', body: formData });
+      const res = await fetch('https://tieuthetunhacongdang-tx-data-analytics-api.hf.space/api/forecast-arima', { method: 'POST', body: formData });
       const result = await res.json();
       if (result.status === 'success') {
         setArimaData([...result.historical, ...result.predictions]);
