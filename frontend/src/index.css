@@ -1,0 +1,49 @@
+/* 1. TẢI FONT CHỮ PIXEL CỦA NES */
+/* Tải Font chữ Pixel hỗ trợ Tiếng Việt tốt nhất */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  image-rendering: pixelated;
+}
+
+body {
+  margin: 0;
+  /* Chuyển sang font VT323 */
+  font-family: 'VT323', monospace !important;
+  /* Vì font này mảnh hơn nên ta tăng size lên một chút cho dễ đọc */
+  font-size: 18px; 
+  background-color: #5C94FC; 
+  color: #fff;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+
+
+/* 2. TÙY CHỈNH THANH CUỘN (SCROLLBAR) KIỂU PIXEL ART */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+/* Nền của thanh cuộn màu đen */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Nút cuộn màu gạch nâu có viền đen */
+::-webkit-scrollbar-thumb {
+  background: #9C4A00; 
+  border: 3px solid #000000;
+  box-shadow: inset -2px -2px 0px #582800; /* Hiệu ứng đổ bóng cho nút cuộn */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BC8C00; /* Đổi sang màu gạch sáng hơn khi di chuột vào */
+}
+
+/* 3. KHỬ RĂNG CƯA CHO CÁC PHẦN TỬ KHÁC */
+/* Đồng bộ cho toàn bộ Input và Button */
+input, select, button, textarea {
+  font-family: 'VT323', monospace !important;
+  font-size: 16px !important;
+}
